@@ -1,0 +1,108 @@
+<div class="min-h-screen  bg-gray-100 p-8">
+  <div class="bg-white p-6 rounded-lg shadow-xl max-w-8xl mx-auto">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Dashboard</h2>
+    <p class="text-xl text-gray-700 mb-8 text-right">{{ welcomeMessage }}</p>
+
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-white border border-gray-200 rounded-lg">
+        <thead>
+          <tr class="bg-gray-200 text-gray-700 text-left uppercase text-sm leading-normal">
+            <th class="py-3 px-6 text-left">S.No</th>
+            <th class="py-3 px-6 text-left">Name</th>
+            <th class="py-3 px-6 text-left">Roll</th>
+            <th class="py-3 px-6 text-left">Add</th>
+            <th class="py-3 px-6 text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-600 text-sm font-light">
+          <tr *ngFor="let user of users" class="border-b border-gray-200 hover:bg-gray-100">
+            <td class="py-3 px-6 text-left whitespace-nowrap">{{ user.sNo }}</td>
+            <td class="py-3 px-6 text-left">{{ user.name }}</td>
+            <td class="py-3 px-6 text-left">{{ user.roll }}</td>
+            <td class="py-3 px-6 text-left">{{ user.address }}</td>
+            <td class="py-3 px-6 text-center  space-x-4">
+              <span *ngIf="user.action" class="text-green-500 font-bold text-lg">✔</span>
+              <span *ngIf="!user.action" class="text-red-500 font-bold text-lg">✖</span>
+               <ng-container >
+                <i class="fas fa-pencil-alt text-blue-500 text-lg cursor-pointer" title="Status: Editable" (click)="editRow()"></i>
+                <i  class="fas fa-plus-circle text-green-600 text-lg cursor-pointer" title="Status: Pending/New" (click)="addRow()"></i>
+                  <button (click)="openPopup(user.sNo)" class="bg-blue-500 text-white px-2 py-1 rounded cursor-pointer">
+            View
+          </button>
+              </ng-container>
+          
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+<!-- Popup -->
+<div *ngIf="selectedRow" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50 p-4 animate-fade-in">
+  <div class="bg-white p-8 rounded-xl shadow-2xl relative max-w-md w-full border border-gray-100 transform scale-100 opacity-100 animate-scale-in">
+    
+    <button (click)="closePopup()" 
+            class="absolute top-3 right-3 text-gray-500 hover:text-gray-800 text-2xl font-bold transition-colors duration-200 focus:outline-none p-1 rounded-full hover:bg-gray-100">
+      &times;
+    </button>
+    
+    <h2 class="text-3xl font-extrabold text-gray-800 mb-6 text-center pb-3 border-b-2 border-blue-500">
+      Details
+    </h2>
+    
+    <div class="space-y-4 text-gray-700 text-lg">
+      <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+        <strong class="text-gray-900">Name :</strong> <span class="flex-grow text-right ml-4">{{ selectedRow.name }}</span>
+      </div>
+      <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+        <strong class="text-gray-900">Roll :</strong> <span class="flex-grow text-right ml-4">{{ selectedRow.roll }}</span>
+      </div>
+      <div class="flex justify-between items-center bg-gray-50 p-3 rounded-lg">
+        <strong class="text-gray-900">Address:</strong> <span class="flex-grow text-right ml-4">{{ selectedRow.address }}</span>
+      </div>
+    </div>
+    
+    <div class="text-center mt-8">
+      <button (click)="closePopup()" 
+              class="bg-red-600 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 transition-all duration-300 ease-in-out">
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Popup -->
+<!-- <div *ngIf="editRow" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+  <div class="bg-white p-6 rounded-lg w-96 shadow-lg relative">
+    <button (click)="closeEditPopup()" class="absolute top-2 right-2 text-gray-600 text-xl cursor-pointer">&times;</button>
+    <h2 class="text-xl font-bold mb-4 text-center">Edit Details</h2> -->
+
+    <!-- <div class="mb-2">
+      <label>Field 1:</label>
+      <input [(ngModel)]="editRow" class="w-full border p-2 rounded" />
+    </div> -->
+    <!-- <div class="mb-2">
+      <label>Field 2:</label>
+      <input [(ngModel)]="editRow.name" class="w-full border p-2 rounded" />
+    </div> -->
+    <!-- <div class="mb-2">
+      <label>Field 3:</label>
+      <input [(ngModel)]="editRow.field3" class="w-full border p-2 rounded" />
+    </div>
+    <div class="mb-2">
+      <label>Field 4:</label>
+      <input [(ngModel)]="editRow.field4" class="w-full border p-2 rounded" />
+    </div>
+    <div class="mb-2">
+      <label>Field 5:</label>
+      <input [(ngModel)]="editRow.field5" class="w-full border p-2 rounded" />
+    </div> -->
+
+    <!-- <div class="text-center mt-4">
+      <button (click)="saveEdit()" class="bg-green-500 text-white px-4 py-2 rounded mr-2">Save</button>
+      <button (click)="closeEditPopup()" class="bg-red-500 text-white px-4 py-2 rounded">Cancel</button>
+    </div>
+  </div>s
+</div> -->

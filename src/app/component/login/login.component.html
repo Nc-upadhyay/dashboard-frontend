@@ -1,0 +1,43 @@
+<div class="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 to-gray-200 p-4">
+  <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-sm border border-gray-200 transform hover:scale-105 transition-transform duration-300 ease-in-out">
+    <h2 class="text-3xl font-extrabold text-gray-800 mb-8 text-center pb-4 border-b-2 border-blue-500">
+      Admin Login
+    </h2>
+
+    <div class="mb-5">
+      <label for="username" class="block text-gray-700 text-sm font-semibold mb-2">Username</label>
+      <input 
+        type="text" 
+        id="username" 
+        placeholder="Enter your username" 
+        [(ngModel)]="username" 
+        class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent placeholder-gray-400 text-gray-800 transition duration-200 ease-in-out" 
+      />
+    </div>
+
+    <div class="relative mb-6">
+      <label for="password" class="block text-gray-700 text-sm font-semibold mb-2">Password</label>
+      <input 
+        [type]="showPassword ? 'text' : 'password'" 
+        id="password" 
+        placeholder="Enter your password" 
+        [(ngModel)]="password" 
+        class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-12 placeholder-gray-400 text-gray-800 transition duration-200 ease-in-out" 
+      />
+      <button 
+        type="button" 
+        (click)="togglePassword()" 
+        class="absolute right-3 top-1/2 -translate-y-1/2 text-blue-600 hover:text-blue-800 text-sm font-semibold focus:outline-none transition-colors duration-200 ease-in-out"
+      >
+        {{ showPassword ? 'Hide' : 'Show' }}
+      </button>
+    </div>
+
+    <button 
+      (click)="login()" 
+      class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 transition-all duration-300 ease-in-out"
+    >
+      Login
+    </button>
+  </div>
+</div>
