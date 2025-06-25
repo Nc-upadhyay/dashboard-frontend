@@ -24,13 +24,14 @@
               <span *ngIf="user.action" class="text-green-500 font-bold text-lg">✔</span>
               <span *ngIf="!user.action" class="text-red-500 font-bold text-lg">✖</span>
                <ng-container >
-                <i class="fas fa-pencil-alt text-blue-500 text-lg cursor-pointer" title="Status: Editable" (click)="editRow()"></i>
+                <i class="fas fa-pencil-alt text-blue-500 text-lg cursor-pointer" title="Status: Editable" (click)="editRow(user)"></i>
                 <i  class="fas fa-plus-circle text-green-600 text-lg cursor-pointer" title="Status: Pending/New" (click)="addRow()"></i>
-                  <button (click)="openPopup(user.sNo)" class="bg-blue-500 text-white px-2 py-1 rounded cursor-pointer">
+                  <button (click)="openPopup(user)" class="bg-blue-500 text-white px-2 py-1 rounded cursor-pointer">
             View
           </button>
+                <i class="fas fa-trash text-red-500 text-lg cursor-pointer" title="Status: Deletable" (click)="deleteRow(user.sNo)"></i>  
               </ng-container>
-          
+          </td
           </tr>
         </tbody>
       </table>
@@ -73,36 +74,28 @@
   </div>
 </div>
 
+
 <!-- Edit Popup -->
-<!-- <div *ngIf="editRow" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+<div *ngIf="editRow1" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
   <div class="bg-white p-6 rounded-lg w-96 shadow-lg relative">
     <button (click)="closeEditPopup()" class="absolute top-2 right-2 text-gray-600 text-xl cursor-pointer">&times;</button>
-    <h2 class="text-xl font-bold mb-4 text-center">Edit Details</h2> -->
+    <h2 class="text-xl font-bold mb-4 text-center">Edit Student</h2> 
 
-    <!-- <div class="mb-2">
-      <label>Field 1:</label>
-      <input [(ngModel)]="editRow" class="w-full border p-2 rounded" />
-    </div> -->
-    <!-- <div class="mb-2">
-      <label>Field 2:</label>
-      <input [(ngModel)]="editRow.name" class="w-full border p-2 rounded" />
-    </div> -->
-    <!-- <div class="mb-2">
-      <label>Field 3:</label>
-      <input [(ngModel)]="editRow.field3" class="w-full border p-2 rounded" />
+     <div class="mb-2">
+      <label>Name:</label>
+      <input [(ngModel)]="editRow1.name" class="w-full border p-2 rounded" />
     </div>
     <div class="mb-2">
-      <label>Field 4:</label>
-      <input [(ngModel)]="editRow.field4" class="w-full border p-2 rounded" />
+      <label>Roll:</label>
+      <input [(ngModel)]="editRow1.roll" class="w-full border p-2 rounded" />
     </div>
-    <div class="mb-2">
-      <label>Field 5:</label>
-      <input [(ngModel)]="editRow.field5" class="w-full border p-2 rounded" />
-    </div> -->
-
-    <!-- <div class="text-center mt-4">
+     <div class="mb-2">
+      <label>Address:</label>
+      <input [(ngModel)]="editRow1.address" class="w-full border p-2 rounded" />
+     </div>
+    <div class="text-center mt-4">
       <button (click)="saveEdit()" class="bg-green-500 text-white px-4 py-2 rounded mr-2">Save</button>
       <button (click)="closeEditPopup()" class="bg-red-500 text-white px-4 py-2 rounded">Cancel</button>
     </div>
-  </div>s
-</div> -->
+  </div>
+</div>

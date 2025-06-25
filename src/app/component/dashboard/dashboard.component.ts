@@ -12,6 +12,7 @@ import { error } from 'console';
   styleUrl: './dashboard.component.css'
 })
 export class DashboardComponent {
+
   welcomeMessage: string = 'Welcome Admin';
   users: User[] =[];
    editRow1: User | null = null;
@@ -23,17 +24,18 @@ export class DashboardComponent {
 addRow(){
   alert('Add Row button clicked');
 }
-editRow(){
-  alert(`Edit Row button clicked for user: `);
+editRow(user:any){
+  // alert(`Edit Row button clicked for user: `);
+  this.editRow1=user;
 }
   toggleView(rowId: number) {
     // this.activeRowId = this.activeRowId === rowId ? null : rowId;
   }
   selectedRow: User |null= null;
 
-  openPopup(id: any) {
-    console.log('Row data:', this.users[id]);
-    this.selectedRow = this.users[id-1];
+  openPopup(user: any) {
+    console.log('Row data:', user);
+    this.selectedRow = user;
   }
 
   closePopup() {
@@ -64,14 +66,34 @@ editRow(){
   }
 
   saveEdit() {
-    // if (this.editRow) {
-    //   const index = this.data.findIndex(item => item.id === this.editRow!.id);
-    //   if (index > -1) {
-    //     this.data[index] = { ...this.editRow };
-    //   }
-    //   this.closeEditPopup();
-    // }
+   this.http.put<any>('http://localhost:8080/dashboard/update', this.editRow1).subscribe(
+      response => {
+        if(response.data===1)
+        alert('User updated successfully:');
+        // this.getUserDate(); // Refresh the user data
+        this.closeEditPopup(); // Close the edit popup
+      },
+      error => {
+        alert('Error updating user:');
+      }
+    );
   }
+
+   deleteRow(arg0: number) {
+    this.http.delete<any>(`http://localhost:8080/dashboard/delete/${arg0}`).subscribe(
+      response => { 
+        if(response.data===1)
+        alert('User deleted successfully');
+
+        this.getUserDate(); // Refresh the user data after deletion
+      },
+      error => {    
+        console.error('Error deleting user:', error);
+        alert('Error deleting user');
+      }
+    );
+
+}
 
 }
 interface User {
