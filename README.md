@@ -1,4 +1,4 @@
-<video src="C:\Users\bhuwn\Documents\Bandicam\admin_dashboard.mp4" controls></video>
+<video src="https://github.com/Nc-upadhyay/dashboard-frontend/blob/main/admin_dashboard.mp4" controls></video>
 
 ![Dashboard Screenshot](./images/admin.png)
 ![Dashboard Screenshot](./images/dashboard.png)
