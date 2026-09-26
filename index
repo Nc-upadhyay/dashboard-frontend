@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Design Interview Roadmap — 3+ YOE Java</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#667085;--line:#e4e7ec;--accent:#2563eb;--accent2:#0f766e;--danger:#b42318;--soft:#eef4ff}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+header{background:#111827;color:white;padding:28px 20px;position:sticky;top:0;z-index:10;box-shadow:0 2px 10px #0001}
+.wrap{max-width:1100px;margin:auto}.top{display:flex;justify-content:space-between;gap:20px;align-items:center;flex-wrap:wrap}
+h1{margin:0 0 5px;font-size:26px}.subtitle{color:#cbd5e1;margin:0}
+.progressbox{min-width:260px}.bar{height:10px;background:#374151;border-radius:20px;overflow:hidden}.fill{height:100%;background:#60a5fa;width:0%;transition:.2s}.progress-text{font-size:13px;color:#d1d5db;margin-top:5px}
+nav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:116px;z-index:9}.navin{display:flex;gap:8px;padding:10px 0;overflow:auto}
+button,.tab{border:1px solid var(--line);background:white;color:var(--text);border-radius:8px;padding:9px 13px;cursor:pointer;font-weight:600}
+button:hover,.tab:hover{background:#f8fafc}.tab.active{background:var(--soft);border-color:#9db9ff;color:#1747a6}
+main{padding:25px 0 60px}.panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px;margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.stat{padding:17px;border:1px solid var(--line);border-radius:10px;background:#fafbfc}.stat strong{display:block;font-size:24px}.muted{color:var(--muted)}
+h2{margin-top:0}h3{margin-bottom:6px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}.filters input{flex:1;min-width:220px;padding:10px;border:1px solid var(--line);border-radius:8px}
+details{border:1px solid var(--line);border-radius:10px;margin:10px 0;background:white}summary{cursor:pointer;padding:14px 16px;font-weight:700;list-style:none}summary::-webkit-details-marker{display:none}
+summary:before{content:"＋";margin-right:9px;color:var(--accent)}details[open] summary:before{content:"−"}
+.topic-body{padding:0 16px 15px;border-top:1px solid var(--line)}ul{padding-left:21px}.topic{display:flex;align-items:flex-start;gap:10px;padding:6px 0}.topic input{margin-top:5px;accent-color:var(--accent)}.topic label{flex:1}
+.badge{display:inline-block;font-size:11px;padding:3px 7px;border-radius:20px;background:#eef2f6;color:#475467;margin-left:5px}.high{background:#eaf7f1;color:#067647}.medium{background:#fff6df;color:#9a6700}.case{background:#f3e8ff;color:#6b21a8}
+.cardq{border:1px solid var(--line);border-radius:10px;padding:14px;margin:10px 0}.q{font-weight:700}.answer{display:none;margin-top:10px;color:#475467;border-top:1px dashed var(--line);padding-top:10px}.show .answer{display:block}
+textarea{width:100%;min-height:120px;border:1px solid var(--line);border-radius:8px;padding:10px;resize:vertical}
+.checkline{display:flex;gap:10px;align-items:center}.small{font-size:13px}
+.hidden{display:none!important}.pill{padding:5px 9px;border-radius:20px;background:#eef2ff;color:#3730a3;font-size:12px;font-weight:700}
+footer{text-align:center;color:var(--muted);padding:30px}
+@media(max-width:650px){header{position:static}nav{position:static}.top{display:block}.progressbox{margin-top:15px}h1{font-size:22px}}
+</style>
+</head>
+<body>
+<header><div class="wrap top">
+<div><h1>System Design Interview Roadmap</h1><p class="subtitle">HLD + LLD • Java/Spring Boot • 3+ YOE • Interview focused</p></div>
+<div class="progressbox"><div class="bar"><div class="fill" id="fill"></div></div><div class="progress-text" id="progressText">0% complete</div></div>
+</div></header>
+<nav><div class="wrap navin">
+<button class="tab active" data-tab="roadmap">Roadmap</button>
+<button class="tab" data-tab="hld">HLD Topics</button>
+<button class="tab" data-tab="lld">LLD Topics</button>
+<button class="tab" data-tab="questions">Questions</button>
+<button class="tab" data-tab="cases">Case Studies</button>
+<button class="tab" data-tab="notes">My Notes</button>
+</div></nav>
+
+<main class="wrap">
+<section id="roadmap" class="section">
+<div class="panel"><h2>How to use this roadmap</h2>
+<p>Target: become interview-ready for 3+ YOE backend/system-design rounds. Use the checkboxes to track learning. Focus on understanding trade-offs, not memorizing diagrams.</p>
+<div class="grid">
+<div class="stat"><strong>30%</strong><span>Concept learning</span></div>
+<div class="stat"><strong>70%</strong><span>Design + interview practice</span></div>
+<div class="stat"><strong>HLD</strong><span>Architecture & distributed systems</span></div>
+<div class="stat"><strong>LLD</strong><span>Java, OOP, SOLID & patterns</span></div>
+</div></div>
+<div class="panel"><h2>Suggested 12–16 Week Path</h2>
+<ol>
+<li><b>Weeks 1–2:</b> HLD fundamentals — scalability, availability, networking, databases.</li>
+<li><b>Weeks 3–4:</b> Redis, Kafka, load balancing, API gateway, rate limiting, reliability.</li>
+<li><b>Weeks 5–7:</b> HLD case studies — URL Shortener, Notification, Chat, Payment, E-commerce.</li>
+<li><b>Weeks 8–9:</b> LLD — OOP, SOLID, UML, design patterns.</li>
+<li><b>Weeks 10–12:</b> LLD case studies + Java implementation + concurrency.</li>
+<li><b>Weeks 13–16:</b> Mixed mock interviews, trade-offs, failure scenarios and timed designs.</li>
+</ol></div>
+<div class="panel"><h2>Interview mindset</h2><p><b>Requirements → Scale → APIs → Data model → High-level architecture → Deep dive → Bottlenecks → Failure handling → Trade-offs.</b></p>
+</div>
+</section>
+
+<section id="hld" class="section hidden">
+<div class="panel"><h2>HLD — High Level Design</h2><p class="muted">Prioritize the topics marked High. For every topic, ask: Why do we need it? What problem does it solve? What breaks without it?</p>
+<div id="hldTopics"></div></div>
+</section>
+
+<section id="lld" class="section hidden">
+<div class="panel"><h2>LLD — Low Level Design</h2><p class="muted">For Java interviews, practice turning requirements into interfaces, classes, relationships, patterns and production-quality code.</p>
+<div id="lldTopics"></div></div>
+</section>
+
+<section id="questions" class="section hidden">
+<div class="panel"><h2>Interview Questions</h2>
+<div class="filters"><input id="searchQ" placeholder="Search questions..."><select id="levelQ"><option value="all">All levels</option><option>Fundamental</option><option>3+ YOE</option><option>Advanced</option></select></div>
+<div id="questionsList"></div></div>
+</section>
+
+<section id="cases" class="section hidden">
+<div class="panel"><h2>System Design Case Studies</h2><p class="muted">For each case, practice requirements, scale estimates, APIs, data model, architecture, bottlenecks, failure scenarios and trade-offs.</p><div id="casesList"></div></div>
+</section>
+
+<section id="notes" class="section hidden">
+<div class="panel"><h2>My Notes</h2><p class="muted">These notes are stored in this browser while you use the page.</p><textarea id="notesBox" placeholder="Write your system design notes here..."></textarea><p><button id="clearNotes">Clear notes</button></p></div>
+<div class="panel"><h2>Reset Progress</h2><p class="muted">This clears all topic checkboxes and progress on this browser.</p><button id="reset" style="color:#b42318">Reset everything</button></div>
+</section>
+</main>
+<footer>System Design Interview Roadmap • HLD + LLD • 3+ YOE Java</footer>
+
+<script>
+const hld = [
+["System Design Fundamentals",["Functional vs non-functional requirements","Scalability","Availability","Reliability","Durability","Latency vs throughput","CAP theorem","ACID vs BASE","Horizontal vs vertical scaling","Stateless vs stateful services","Synchronous vs asynchronous communication"],"High"],
+["Networking & APIs",["HTTP / HTTPS","TCP vs UDP","DNS","TLS/SSL","REST APIs","WebSocket","Long polling","Server-Sent Events","Connection pooling","CDN"],"High"],
+["Load Balancing & Traffic",["L4 vs L7 load balancing","Round Robin","Weighted Round Robin","Least Connections","Health checks","Sticky sessions","Failover","Reverse proxy"],"High"],
+["Caching & Redis",["Cache-aside","Read-through","Write-through","Write-back","Cache invalidation","TTL","LRU / eviction","Cache stampede","Cache penetration","Distributed cache","Distributed locking","Redis"],"High"],
+["Databases",["Indexing","Composite indexes","B-tree basics","Query optimization","Transactions","Isolation levels","Deadlocks","Read replicas","Replication","Partitioning","Sharding","Connection pooling","SQL vs NoSQL selection"],"High"],
+["Messaging & Kafka",["Message queues","Pub/Sub","Kafka topics","Partitions","Producers / consumers","Consumer groups","Offsets","Ordering","At-most-once","At-least-once","Exactly-once concepts","Retries","DLQ","Idempotency","Backpressure"],"High"],
+["Distributed Systems",["Eventual vs strong consistency","Distributed transactions","Two-phase commit","Saga pattern","Distributed locks","Leader election","Consensus basics","Idempotency","Timeouts","Retries","Circuit breaker","Bulkhead"],"High"],
+["Reliability & Disaster Recovery",["Health checks","Graceful degradation","Failover","Backups","RTO","RPO","Exponential backoff","Fault isolation","Disaster recovery"],"Medium"],
+["Security",["Authentication vs authorization","JWT","OAuth2","OIDC","SSO","RBAC","HTTPS","API security","Rate limiting","Encryption","Secrets management"],"Medium"],
+["Observability",["Logs","Metrics","Tracing","Distributed tracing","Correlation IDs","Monitoring","Alerting","Health endpoints"],"Medium"],
+["Microservices",["Service boundaries","Service discovery","API Gateway","Inter-service communication","Database per service","Saga","Event-driven architecture","Versioning","Deployment strategies"],"High"]
+];
+const lld = [
+["OOP & Object Modeling",["Encapsulation","Abstraction","Inheritance","Polymorphism","Composition","Association","Aggregation","Dependency","Interface vs abstract class"],"High"],
+["SOLID Principles",["Single Responsibility","Open/Closed","Liskov Substitution","Interface Segregation","Dependency Inversion"],"High"],
+["Creational Patterns",["Factory","Abstract Factory","Builder","Singleton"],"High"],
+["Structural Patterns",["Adapter","Decorator","Facade","Proxy","Composite"],"High"],
+["Behavioral Patterns",["Strategy","Observer","Chain of Responsibility","Command","State","Template Method"],"High"],
+["Java LLD Essentials",["Collections","Generics","equals() and hashCode()","Comparable vs Comparator","Immutability","Exception handling","Functional interfaces","Streams","Dependency Injection"],"High"],
+["Concurrency & Thread Safety",["synchronized","Lock","ReentrantLock","ConcurrentHashMap","ExecutorService","CompletableFuture","Atomic classes","Race conditions","Deadlocks","Thread-safe design"],"High"],
+["UML & Design Communication",["Class diagrams","Sequence diagrams","Association vs composition","Dependency direction","Interface-driven design"],"Medium"],
+["Production-oriented LLD",["Extensibility","Testability","Validation","Error handling","Configuration","Logging","Concurrency","Backward compatibility"],"High"]
+];
+
+const questions = [
+["What is the difference between scalability, availability and reliability?","Fundamental","Define each with an example and explain how one can improve without automatically improving the others."],
+["What happens when you type a URL into a browser?","Fundamental","Walk through DNS, TCP/TLS, HTTP, load balancer, application server and response."],
+["Why do we need a load balancer?","Fundamental","Explain distribution, health checks, failover and why sticky sessions can be problematic."],
+["When would you use Redis?","3+ YOE","Discuss cache, session, counters, distributed locks and the consistency/failure trade-offs."],
+["What happens if Redis goes down?","3+ YOE","Explain cache miss behavior, database load, fallback, TTL and protection against a stampede."],
+["Why Kafka instead of REST?","3+ YOE","Compare decoupling, buffering, throughput, retry, ordering and delivery semantics."],
+["How do you handle duplicate Kafka messages?","3+ YOE","Design idempotent consumers using an idempotency key or unique constraint."],
+["How do you guarantee ordering in Kafka?","3+ YOE","Explain partition ordering and the relationship between key selection and consumer processing."],
+["When should you shard a database?","3+ YOE","Explain limits, shard key selection, hotspots, rebalancing and cross-shard queries."],
+["How would you design for a database primary failure?","Advanced","Discuss replicas, failover, data loss, RPO/RTO and client behavior."],
+["How do you design a rate limiter?","3+ YOE","Compare token bucket, leaky bucket and fixed/sliding windows; consider distributed deployment."],
+["How do you prevent cache stampede?","Advanced","Discuss jittered TTL, locks, request coalescing and stale-while-revalidate."],
+["How would you trace one request across microservices?","3+ YOE","Use correlation/trace IDs, logs, metrics and distributed tracing."],
+["Why prefer composition over inheritance?","Fundamental","Explain coupling, behavior changes and extensibility with a Java example."],
+["Explain a real violation of SOLID you have seen.","3+ YOE","Identify the principle, show the problematic design and refactor it."],
+["When would you use Strategy pattern?","3+ YOE","Give a scenario with multiple algorithms/behaviors that change independently."],
+["Factory vs Strategy — what problem does each solve?","3+ YOE","Factory focuses on object creation; Strategy focuses on interchangeable behavior."],
+["How would you make a class thread-safe?","3+ YOE","Discuss immutability, synchronization, locks, atomic operations and safe publication."],
+["Design a notification system.","3+ YOE","Clarify channels, templates, retries, preferences, Kafka, idempotency, DLQ and scaling."],
+["Design a URL shortener.","Fundamental","Cover requirements, code generation, storage, caching, redirects, analytics and scale."],
+["Design a chat system.","Advanced","Cover WebSocket, message storage, delivery, presence, ordering and offline users."],
+["Design a payment system.","Advanced","Cover idempotency, transaction state, retries, reconciliation, consistency and failure."],
+["Design a distributed job scheduler.","Advanced","Cover job storage, workers, locking/leases, retries, scheduling and failover."]
+];
+
+const cases = [
+["URL Shortener","HLD","Short URL generation, redirect path, cache, DB indexes, analytics, scaling","Fundamental"],
+["Rate Limiter","HLD + LLD","Token bucket/sliding window, Redis, distributed consistency, thread safety","3+ YOE"],
+["Notification System","HLD + LLD","Kafka, templates, email/SMS/push, retries, DLQ, preferences, idempotency","3+ YOE"],
+["Chat System","HLD","WebSocket, message persistence, delivery states, presence, ordering, offline delivery","Advanced"],
+["Payment System","HLD","Idempotency, state machine, transactions, retries, reconciliation, failure handling","Advanced"],
+["E-commerce System","HLD","Catalog, cart, inventory, order, payment, event-driven architecture","3+ YOE"],
+["Food Delivery System","HLD","Restaurant discovery, order lifecycle, delivery assignment, location and notifications","3+ YOE"],
+["YouTube-like Video Platform","HLD","Upload, transcoding, object storage, CDN, metadata and playback","Advanced"],
+["Parking Lot","LLD","Entities, spot allocation, pricing strategy, extensibility","Fundamental"],
+["Elevator System","LLD","State, scheduling strategy, multiple elevators, concurrency","3+ YOE"],
+["Splitwise","LLD","Expense models, split strategies, balances, settlement and extensibility","3+ YOE"],
+["Meeting Room Booking","LLD","Room availability, booking conflicts, recurring rules, concurrency","3+ YOE"],
+["Logger","LLD","Levels, appenders, formatting, async logging, thread safety","3+ YOE"],
+["Cache","LLD","Generic cache, eviction strategy, TTL, thread safety","3+ YOE"]
+];
+
+function esc(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function key(s){return "sd_"+s.replace(/[^a-z0-9]+/gi,"_").toLowerCase()}
+function badge(level){return `<span class="badge ${level==='High'?'high':level==='Medium'?'medium':''}">${level}</span>`}
+
+function renderTopics(data,id){
+ const root=document.getElementById(id);
+ root.innerHTML=data.map((g,i)=>`<details><summary>${esc(g[0])} ${badge(g[2])}</summary><div class="topic-body">${g[1].map((t,j)=>`<div class="topic"><input type="checkbox" id="${key(id+"_"+i+"_"+j)}" data-track><label for="${key(id+"_"+i+"_"+j)}">${esc(t)}</label></div>`).join("")}</div></details>`).join("");
+}
+
+function renderQuestions(){
+ const search=document.getElementById("searchQ").value.toLowerCase();
+ const level=document.getElementById("levelQ").value;
+ document.getElementById("questionsList").innerHTML=questions.filter(q=>(level==="all"||q[1]===level)&&q[0].toLowerCase().includes(search)).map((q,i)=>`<div class="cardq" data-q><div class="q">${esc(q[0])} ${badge(q[1])}</div><button type="button" class="small" onclick="this.parentElement.classList.toggle('show')">Show approach</button><div class="answer">${esc(q[2])}</div></div>`).join("");
+}
+function renderCases(){
+ document.getElementById("casesList").innerHTML=cases.map((c,i)=>`<details><summary>${esc(c[0])} <span class="badge case">${c[1]}</span> ${badge(c[3])}</summary><div class="topic-body"><p>${esc(c[2])}</p><div class="checkline"><input type="checkbox" id="case_${i}" data-track><label for="case_${i}">I can design this in an interview</label></div></div></details>`).join("");
+}
+function save(){document.querySelectorAll("[data-track]").forEach(x=>localStorage.setItem(x.id,x.checked)); localStorage.setItem("sd_notes",document.getElementById("notesBox")?.value||""); updateProgress()}
+function restore(){document.querySelectorAll("[data-track]").forEach(x=>x.checked=localStorage.getItem(x.id)==="true"); if(document.getElementById("notesBox"))document.getElementById("notesBox").value=localStorage.getItem("sd_notes")||"";updateProgress()}
+function updateProgress(){const a=[...document.querySelectorAll("[data-track]")],done=a.filter(x=>x.checked).length,p=a.length?Math.round(done/a.length*100):0;document.getElementById("fill").style.width=p+"%";document.getElementById("progressText").textContent=`${p}% complete • ${done}/${a.length} completed`}
+function tabs(){
+ document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");document.querySelectorAll(".section").forEach(s=>s.classList.toggle("hidden",s.id!==b.dataset.tab));window.scrollTo({top:0,behavior:"smooth"})}))
+}
+renderTopics(hld,"hldTopics");renderTopics(lld,"lldTopics");renderQuestions();renderCases();tabs();restore();
+document.addEventListener("change",e=>{if(e.target.matches("[data-track]"))save()});
+document.getElementById("searchQ").addEventListener("input",renderQuestions);document.getElementById("levelQ").addEventListener("change",renderQuestions);
+document.getElementById("notesBox").addEventListener("input",save);
+document.getElementById("clearNotes").addEventListener("click",()=>{document.getElementById("notesBox").value="";save()});
+document.getElementById("reset").addEventListener("click",()=>{if(confirm("Reset all progress and notes?")){Object.keys(localStorage).filter(k=>k.startsWith("sd_")).forEach(k=>localStorage.removeItem(k));location.reload()}});
+</script>
+</body>
+</html>
